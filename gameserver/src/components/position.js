@@ -4,11 +4,11 @@ const {Point} = require('../utils/point')
 class Position extends Component {
 
     #point;
-    type = "Position";
+    static type = "Position";
 
-    constructor(x, y) {
+    constructor(data) {
         super();
-        this.#point = new Point(x, y)
+        this.#point = new Point(data.x, data.y)
     }
 
     distance(other) {

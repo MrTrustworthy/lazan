@@ -1,17 +1,12 @@
 const {ComponentList, DuplicateComponentError, ComponentNotThereError} = require('./componentlist');
-const {Component} = require('./component');
-
-
-class TestComponent1 extends Component {
-    type = "TestComponent1"
-}
+const {Position} = require('./position');
 
 
 test('Basic ComponentList behaviour', () => {
 
     let clist = new ComponentList();
-    let c1 = new TestComponent1();
-    let c2 = new TestComponent1();
+    let c1 = new Position({x: 1, y: 2});
+    let c2 = new Position({x: 1, y: 2});
 
     clist.add(c1)
     clist.add(c2)
@@ -21,8 +16,8 @@ test('Basic ComponentList behaviour', () => {
     expect(() => {
         clist.add(c1)
     }).toThrow(DuplicateComponentError)
-    expect(clist.containsType(c1.type)).toBe(true);
-    expect(clist.containsAllTypes([c2.type])).toBe(true);
+    expect(clist.containsType(c1.constructor.type)).toBe(true);
+    expect(clist.containsAllTypes([c2.constructor.type])).toBe(true);
 
     let r1 = clist.remove(c1)
 
@@ -38,7 +33,7 @@ test('Basic ComponentList behaviour', () => {
     expect(clist.length).toBe(2);
 
 
-    let r2s = clist.removeType("TestComponent1")
+    let r2s = clist.removeType("Position")
     expect(r2s.length).toBe(2);
     expect(clist.length).toBe(0);
     expect(clist.contains(c1)).toBe(false)
@@ -46,8 +41,8 @@ test('Basic ComponentList behaviour', () => {
     expect(() => {
         clist.remove(c2)
     }).toThrow(ComponentNotThereError)
-    expect(clist.containsType(c1.type)).toBe(false);
-    expect(clist.containsAllTypes([c2.type])).toBe(false);
+    expect(clist.containsType(c1.constructor.type)).toBe(false);
+    expect(clist.containsAllTypes([c2.constructor.type])).toBe(false);
 
 });
 
@@ -55,8 +50,8 @@ test('Basic ComponentList behaviour', () => {
 test('ComponentList Duplicate behaviours', () => {
 
     let clist = new ComponentList();
-    let c1 = new TestComponent1();
-    let c2 = new TestComponent1();
+    let c1 = new Position({x: 1, y: 2});
+    let c2 = new Position({x: 1, y: 2});
 
     clist.add(c1);
     clist.add(c2);
@@ -65,6 +60,6 @@ test('ComponentList Duplicate behaviours', () => {
         clist.getSingleType("Component")
     }).toThrow(ComponentNotThereError);
     clist.remove(c2);
-    expect(clist.getSingleType("TestComponent1").equals(c1)).toBe(true);
+    expect(clist.getSingleType("Position").equals(c1)).toBe(true);
 
 });

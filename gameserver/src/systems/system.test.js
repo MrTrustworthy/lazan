@@ -5,11 +5,11 @@ const {arrayEquals} = require('../utils/arrayutils')
 
 
 class TestComponent1 extends Component {
-    type = "Test1"
+    static type = "Test1"
 }
 
 class TestComponent2 extends Component {
-    type = "Test2"
+    static type = "Test2"
 }
 
 class TestSystem1 extends System {

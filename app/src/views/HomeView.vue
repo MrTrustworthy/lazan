@@ -1,10 +1,12 @@
 <script setup>
-import TheWelcome from "../components/TheWelcome.vue";
+    import Canvas from "../components/Canvas.vue";
+
 </script>
 
 <template>
-  <main>
-    <p> Yooooo</p>
-    <TheWelcome />
-  </main>
+    <p>Home</p>
+    <Canvas/>
 </template>
+
+
+

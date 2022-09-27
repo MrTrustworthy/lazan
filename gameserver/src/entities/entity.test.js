@@ -9,3 +9,20 @@ test('Basic Entity behaviour', () => {
     expect(e1.equals(e2)).toBe(false);
 
 });
+
+
+test('Json loading', () => {
+
+    let e1 = Entity.loadFromJson({
+        id: "applepie",
+        components: [
+            {
+                id: "bananapie",
+                type: "Position",
+                data: {}
+            }
+        ]
+    });
+
+    expect(e1.components.length).toBe(1);
+});

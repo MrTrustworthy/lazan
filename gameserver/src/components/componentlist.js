@@ -9,9 +9,9 @@ class ComponentList {
 
 
     getSingleType(type) {
-        let components = this.#list.filter(e => e.type === type)
+        let components = this.#list.filter(e => e.constructor.type === type)
         if (components.length !== 1) {
-            throw new ComponentNotThereError(`Component exists ${components.length} time!`);
+            throw new ComponentNotThereError(`Component exists ${components.length} times!`);
         }
         return components[0];
     }
@@ -21,7 +21,7 @@ class ComponentList {
     }
 
     containsType(type) {
-        return this.#list.filter(e => e.type === type).length > 0;
+        return this.#list.filter(e => e.constructor.type === type).length > 0;
     }
 
     containsAllTypes(types) {
@@ -35,8 +35,8 @@ class ComponentList {
     }
 
     removeType(type) {
-        let remove = this.#list.filter(c => c.type === type);
-        this.#list = this.#list.filter(c => c.type !== type);
+        let remove = this.#list.filter(c => c.constructor.type === type);
+        this.#list = this.#list.filter(c => c.constructor.type !== type);
         return remove;
     }
 

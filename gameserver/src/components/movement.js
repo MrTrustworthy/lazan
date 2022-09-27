@@ -5,19 +5,19 @@ class Movement extends Component {
 
     #point;
     speed;
-    type = "Movement";
+    static type = "Movement";
 
-    constructor(x, y, speed) {
+    constructor(data) {
         super();
-        this.#point = new Point(x, y)
-        this.speed = speed;
+        this.#point = new Point(data.x, data.y)
+        this.speed = data.speed;
     }
 
     distance(other) {
         return this.#point.distance(other.#point)
     }
 
-    get point(){
+    get point() {
         return this.#point;
     }
 }
