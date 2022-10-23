@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --silent=false",
-    "dev": "node src/server/sockets.js"
+    "dev": "node src/server/instanceserver.js"
   },
   "author": "",
   "license": "ISC",

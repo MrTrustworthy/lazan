@@ -19,17 +19,19 @@ class Instance {
                         {
                             id: "abcd",
                             type: "Movement",
-                            data: {x: 10, y: 10, speed: 1}
+                            data: {x: 10, y: 10, speed: 0.1}
                         }
                     ]
                 }
             ]
         })
 
+        setTimeout(() => this.#world.startProcess(), 2000)
+
     }
 
     getState() {
-        return this.#world.serialize()
+        return this.#world.serialize();
     }
 
 }
