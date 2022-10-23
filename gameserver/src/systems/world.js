@@ -52,7 +52,6 @@ class World {
         if (this.processStatus === ProcessStatus.STOPPED) {
             throw new RunningProcessError("Something went terribly wrong");
         }
-
         this.#time++;
         this.#systems.forEach(system => {
             system.process(this.#entities, {})
