@@ -43,6 +43,10 @@ class ComponentList {
     get length() {
         return this.#list.length
     }
+
+    get map() {
+        return this.#list.map.bind(this.#list)
+    }
 }
 
 class DuplicateComponentError extends Error {

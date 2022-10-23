@@ -54,7 +54,7 @@ class World {
         }
         this.#time++;
         this.#systems.forEach(system => {
-            system.process(this.#entities, {})
+            system.process(this.#entities, {time: this.#time})
         })
     }
 
@@ -63,6 +63,13 @@ class World {
         world.#time = json.time
         world.#entities.push(...json.entities.map(Entity.loadFromJson))
         return world;
+    }
+
+    serialize() {
+        return {
+            time: this.#time,
+            entities: this.#entities.map(e => e.serialize())
+        }
     }
 
 }

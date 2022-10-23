@@ -33,6 +33,32 @@ test('World Loading', () => {
 });
 
 
+test('Serialization', async () => {
+    let json ={
+        time: 0,
+        entities: [
+            {
+                id: "bananas-id",
+                components: [
+                    {
+                        id: "abc",
+                        type: "Position",
+                        data: {x: 1, y: 1}
+                    },
+                    {
+                        id: "abcd",
+                        type: "Movement",
+                        data: {x: 10, y: 10, speed: 1}
+                    }
+                ]
+            }
+        ]
+    }
+    let w = World.loadFromJson(json)
+    let serialized = w.serialize();
+    expect(json).toEqual(serialized);
+});
+
 test('Processing', async () => {
     let w = World.loadFromJson({
         time: 20,

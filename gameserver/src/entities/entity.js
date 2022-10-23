@@ -14,11 +14,18 @@ class Entity {
 
     static loadFromJson(json) {
         const entity = new Entity()
-        entity.id = json["id"]
-        json["components"].forEach(comp => {
+        entity.id = json.id
+        json.components.forEach(comp => {
             entity.components.add(ComponentRegistry.loadFromJson(comp))
         })
         return entity
+    }
+
+    serialize() {
+        return {
+            id: this.id,
+            components: this.components.map(c => c.serialize())
+        }
     }
 }
 

@@ -8,6 +8,10 @@ class Component {
         return this.id === other.id;
     }
 
+    serialize() {
+        throw new NotImplementedError("Serialization not implemented!")
+    }
+
 }
 
 

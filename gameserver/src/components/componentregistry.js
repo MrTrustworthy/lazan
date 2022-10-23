@@ -16,9 +16,9 @@ class ComponentRegistry {
     }
 
     static loadFromJson(json) {
-        let constructor = this.getClass(json["type"])
-        let comp = new constructor(json["data"])
-        comp.id = json["id"]
+        let constructor = this.getClass(json.type)
+        let comp = new constructor(json.data)
+        comp.id = json.id
         return comp;
     }
 }

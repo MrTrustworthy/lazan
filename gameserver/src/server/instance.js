@@ -2,7 +2,7 @@ const {World} = require('../systems/world');
 
 class Instance {
 
-    world = null;
+    #world = null;
 
     constructor(parameters) {
         this.#world = World.loadFromJson({
@@ -29,7 +29,7 @@ class Instance {
     }
 
     getState() {
-
+        return this.#world.serialize()
     }
 
 }

@@ -22,6 +22,17 @@ class Position extends Component {
     set point(point) {
         this.#point = point;
     }
+
+    serialize() {
+        return {
+            type: "Position",
+            id: this.id,
+            data: {
+                x: this.#point.x,
+                y: this.#point.y,
+            }
+        }
+    }
 }
 
 module.exports = {Position}

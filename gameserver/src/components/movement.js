@@ -20,6 +20,18 @@ class Movement extends Component {
     get point() {
         return this.#point;
     }
+
+    serialize() {
+        return {
+            type: "Movement",
+            id: this.id,
+            data: {
+                x: this.#point.x,
+                y: this.#point.y,
+                speed: this.speed,
+            }
+        }
+    }
 }
 
 module.exports = {Movement}
